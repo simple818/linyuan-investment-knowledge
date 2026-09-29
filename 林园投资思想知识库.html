@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林园投资思想知识库 · 行业＋垄断＋成瘾</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231D3A2E'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23E8C766' font-family='Georgia'%3E林%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{
+  --paper:#F6F2E9;
+  --paper-2:#EFE9DB;
+  --ink:#24221C;
+  --ink-2:#4A463C;
+  --ink-3:#6E6A5C;
+  --green:#1D3A2E;
+  --green-2:#2C5B46;
+  --gold:#B9922F;
+  --gold-2:#E8C766;
+  --red:#A3442E;
+  --line:#D8D0BC;
+  --card:#FCFAF3;
+  --shadow:0 6px 22px rgba(36,34,28,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.75;}
+h1,h2,h3,h4{font-family:"Noto Serif SC",Georgia,"Songti SC",serif;line-height:1.35;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--gold-2);color:var(--ink);}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+/* ===== 顶部导航 ===== */
+nav.top{position:sticky;top:0;z-index:50;background:rgba(246,242,233,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+nav.top .wrap{display:flex;align-items:center;gap:8px;height:56px;overflow-x:auto;white-space:nowrap;}
+.brand{font-family:"Noto Serif SC",serif;font-weight:900;color:var(--green);margin-right:12px;font-size:17px;display:flex;align-items:center;gap:8px;}
+.brand .seal{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;background:var(--red);color:#fff;font-size:14px;flex:none;}
+nav.top a.anchor{font-size:13.5px;color:var(--ink-2);padding:6px 10px;border-radius:6px;}
+nav.top a.anchor:hover{background:var(--paper-2);color:var(--green);}
+
+/* ===== Hero ===== */
+header.hero{position:relative;overflow:hidden;background:var(--green);color:#EFE9DB;}
+header.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(1200px 500px at 78% -10%,rgba(232,199,102,.22),transparent 60%),
+  radial-gradient(900px 420px at 10% 110%,rgba(163,68,46,.28),transparent 60%);
+}
+.mountains{position:absolute;left:0;right:0;bottom:0;height:130px;opacity:.5;}
+header.hero .wrap{position:relative;padding:88px 24px 74px;display:grid;grid-template-columns:1.55fr 1fr;gap:48px;align-items:end;}
+.hero-copy .kicker{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:4px;color:var(--gold-2);border:1px solid rgba(232,199,102,.5);padding:6px 14px;border-radius:999px;margin-bottom:26px;}
+.hero-copy h1{font-size:clamp(34px,5vw,58px);font-weight:900;margin-bottom:14px;color:#fff;}
+.hero-copy h1 .formula{display:block;color:var(--gold-2);font-size:clamp(24px,3vw,34px);margin-top:10px;letter-spacing:2px;}
+.hero-copy p.lead{font-size:16.5px;color:#CFC8B2;max-width:560px;font-weight:300;}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.stat{background:rgba(252,250,243,.06);border:1px solid rgba(232,199,102,.28);border-radius:14px;padding:20px 18px;}
+.stat b{display:block;font-family:"Noto Serif SC",serif;font-size:30px;color:var(--gold-2);font-weight:900;line-height:1.2;}
+.stat span{font-size:12.5px;color:#B9B3A0;letter-spacing:1px;}
+
+/* ===== 章节通用 ===== */
+section{padding:72px 0;}
+.sec-head{margin-bottom:40px;max-width:760px;}
+.sec-tag{display:inline-block;font-size:12px;letter-spacing:3px;color:var(--red);border-bottom:2px solid var(--red);padding-bottom:4px;margin-bottom:12px;}
+.sec-head h2{font-size:clamp(26px,3.2vw,36px);font-weight:900;color:var(--green);margin-bottom:12px;}
+.sec-head p{color:var(--ink-3);font-size:15px;}
+.sec-alt{background:var(--paper-2);}
+.divider{border:none;border-top:1px solid var(--line);}
+
+/* ===== 核心公式 ===== */
+.formula-box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:44px 40px;box-shadow:var(--shadow);position:relative;}
+.formula-box .eq{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:14px;text-align:center;}
+.eq .term{background:var(--green);color:#fff;border-radius:14px;padding:20px 12px;font-family:"Noto Serif SC",serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;box-shadow:0 8px 20px rgba(29,58,46,.25);}
+.eq .op{font-family:"Noto Serif SC",serif;font-size:26px;color:var(--gold);font-weight:900;}
+.formula-note{margin-top:30px;padding-top:24px;border-top:1px dashed var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.fn{font-size:14px;color:var(--ink-2);}
+.fn b{display:block;color:var(--green);font-family:"Noto Serif SC",serif;font-size:15.5px;margin-bottom:4px;}
+.fn .src{color:var(--ink-3);font-size:12px;margin-top:6px;}
+
+/* ===== 体系层级 ===== */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.pillar{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px;position:relative;transition:transform .25s ease,box-shadow .25s ease;}
+.pillar:hover{transform:translateY(-5px);box-shadow:var(--shadow);}
+.pillar .num{font-family:"Noto Serif SC",serif;font-size:13px;color:var(--gold);letter-spacing:2px;}
+.pillar h3{font-size:20px;margin:8px 0 10px;color:var(--green);font-weight:700;}
+.pillar p{font-size:13.5px;color:var(--ink-3);}
+.pillar ul{list-style:none;margin-top:12px;display:grid;gap:6px;}
+.pillar li{font-size:13px;color:var(--ink-2);padding-left:14px;position:relative;}
+.pillar li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.pillar .flow-arrow{position:absolute;right:-17px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:20px;z-index:2;}
+
+/* ===== 卡片网格 ===== */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;}
+.card h4{font-size:17px;color:var(--green);margin-bottom:8px;display:flex;gap:10px;align-items:center;}
+.card h4 .ico{flex:none;width:26px;height:26px;border-radius:7px;background:var(--green);color:var(--gold-2);display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-family:"Noto Serif SC",serif;font-weight:700;}
+.card p{font-size:13.5px;color:var(--ink-2);}
+.card .tagline{font-size:12px;color:var(--red);margin-top:10px;}
+
+/* ===== 时间轴 ===== */
+.timeline{display:grid;grid-template-columns:96px 28px 1fr;gap:0;margin-top:10px;}
+.tl-row{display:contents;}
+.tl-time{text-align:right;padding:18px 0;font-family:"Noto Serif SC",serif;font-weight:700;color:var(--ink-2);font-size:15px;}
+.tl-axis{position:relative;display:flex;justify-content:center;}
+.tl-axis::before{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(var(--gold),var(--green));}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--gold);border:3px solid var(--paper);margin-top:22px;position:relative;z-index:1;}
+.tl-body{padding:16px 0 18px 18px;}
+.tl-body b{display:block;color:var(--green);font-family:"Noto Serif SC",serif;font-size:16.5px;}
+.tl-body p{font-size:13.5px;color:var(--ink-2);margin-top:4px;max-width:640px;}
+
+/* ===== 流程链 ===== */
+.chain{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:stretch;}
+.chain .node{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 12px;text-align:center;font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px;justify-content:center;min-height:96px;}
+.chain .node b{color:var(--green);font-family:"Noto Serif SC",serif;font-size:14.5px;}
+.chain .node .n{font-family:"Noto Serif SC",serif;color:var(--gold);font-size:12px;letter-spacing:1px;}
+.chain .arrow{align-self:center;color:var(--gold);font-size:18px;text-align:center;}
+
+/* ===== 语录 ===== */
+.quotes{columns:2;column-gap:20px;}
+.quote{break-inside:avoid;background:var(--card);border-left:4px solid var(--red);border-radius:10px;padding:20px 22px;margin-bottom:16px;box-shadow:0 3px 12px rgba(36,34,28,.05);}
+.quote p{font-family:"Noto Serif SC",serif;font-size:16px;line-height:1.8;color:var(--ink);}
+.quote .who{margin-top:10px;font-size:12.5px;color:var(--ink-3);letter-spacing:1px;}
+
+/* ===== 表格 ===== */
+table.data{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;table-layout:fixed;}
+table.data th{background:var(--green);color:#EFE9DB;text-align:left;padding:12px 14px;font-size:13.5px;letter-spacing:1px;}
+table.data td{padding:11px 14px;font-size:13.5px;border-top:1px solid var(--line);vertical-align:top;}
+table.data tr:nth-child(even) td{background:rgba(29,58,46,.03);}
+.col-idx{width:8%;} .col-name{width:20%;} .col-std{width:44%;} .col-src{width:28%;}
+
+/* ===== 图表容器 ===== */
+.chart-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);}
+.chart-box h4{font-family:"Noto Serif SC",serif;color:var(--green);margin-bottom:4px;}
+.chart-box .sub{font-size:12.5px;color:var(--ink-3);margin-bottom:8px;}
+.chart{width:100%;height:380px;}
+
+/* ===== 书卡 ===== */
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.book{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);}
+.book .head{background:linear-gradient(135deg,var(--green),var(--green-2));color:#EFE9DB;padding:22px 20px;}
+.book .head .t{font-family:"Noto Serif SC",serif;font-size:19px;font-weight:700;line-height:1.5;}
+.book .head .m{font-size:12px;color:var(--gold-2);margin-top:6px;letter-spacing:1px;}
+.book .body{padding:18px 20px;}
+.book .body p{font-size:13px;color:var(--ink-2);}
+.book .body .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.book .body .chip{font-size:11.5px;background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--ink-2);}
+
+/* ===== Footer ===== */
+footer{background:var(--green);color:#B9B3A0;padding:46px 0 40px;}
+footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+footer h4{color:var(--gold-2);font-size:16px;margin-bottom:12px;}
+footer p,footer li{font-size:13px;line-height:1.9;}
+footer ul{list-style:none;}
+
+@media (max-width:900px){
+  .card p,.pillar p,.pillar li,.tl-body p,.fn,.quote p,.chain .node{font-size:14px;}
+  header.hero .wrap{grid-template-columns:1fr;padding:60px 24px 56px;gap:30px;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .pillars{grid-template-columns:1fr 1fr;}
+  .pillar .flow-arrow{display:none;}
+  .cards{grid-template-columns:1fr 1fr;}
+  .formula-box .eq{grid-template-columns:1fr;gap:8px;}
+  .eq .op{transform:rotate(90deg);font-size:18px;}
+  .formula-note{grid-template-columns:1fr;}
+  .books{grid-template-columns:1fr;}
+  .chain{grid-template-columns:1fr 1fr;}
+  .chain .arrow{display:none;}
+  .quotes{columns:1;}
+}
+@media (max-width:560px){
+  .pillars,.cards,.hero-stats{grid-template-columns:1fr;}
+  .timeline{grid-template-columns:70px 22px 1fr;}
+  footer .wrap{grid-template-columns:1fr;}
+  section{padding:52px 0;}
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <span class="brand"><span class="seal">林</span>林园投资思想 · 知识库</span>
+    <a class="anchor" href="#formula">核心公式</a>
+    <a class="anchor" href="#system">投资体系</a>
+    <a class="anchor" href="#rules">十二条规则</a>
+    <a class="anchor" href="#finance">六大指标</a>
+    <a class="anchor" href="#industry">行业主线</a>
+    <a class="anchor" href="#arbitrage">无风险套利</a>
+    <a class="anchor" href="#market">牛熊策略</a>
+    <a class="anchor" href="#legend">财富传奇</a>
+    <a class="anchor" href="#quotes">语录</a>
+    <a class="anchor" href="#books">三本书</a>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <svg class="mountains" viewBox="0 0 1440 130" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,130 L0,90 L180,30 L360,95 L560,20 L760,100 L960,45 L1160,105 L1280,60 L1440,90 L1440,130 Z" fill="rgba(246,242,233,.05)"/>
+    <path d="M0,130 L0,105 L240,60 L420,110 L640,55 L860,112 L1080,70 L1440,100 L1440,130 Z" fill="rgba(232,199,102,.10)"/>
+  </svg>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker">确定性 · 长期主义 · 复合增长</span>
+      <h1>林园投资思想知识库
+        <span class="formula">好企业 = 行业 ＋ 垄断 ＋ 成瘾</span>
+      </h1>
+      <p class="lead">从 8000 元到数百亿身家、30 余年投资无败绩的 A 股常青树。本知识库蒸馏《林园炒股秘籍（精装增补版）》《复合增长》《财报掘金》三部著作，还原其确定性投资体系的全貌。</p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>8000元</b><span>1989年起步资金</span></div>
+      <div class="stat"><b>30年+</b><span>公开市场无年度亏损纪录</span></div>
+      <div class="stat"><b>98%</b><span>早期16年年均复合增长</span></div>
+      <div class="stat"><b>千亿级</b><span>在管资产规模（2022）</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 核心公式 ===== -->
+<section id="formula">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">壹 · 财富密码</span>
+      <h2>一句话看懂林园</h2>
+      <p>林园自述："我赚钱的秘籍就是'行业＋垄断＋成瘾'。" 选对朝阳行业、买有垄断定价权的公司、卖让人离不开的产品——三者叠加，就是"印钞机"式的赚钱机器。</p>
+    </div>
+    <div class="formula-box">
+      <div class="eq">
+        <div class="term">朝阳行业<br><small style="font-weight:400;font-size:13px;color:#CFC8B2;">未来几十年高速增长</small></div>
+        <div class="op">＋</div>
+        <div class="term">垄断地位<br><small style="font-weight:400;font-size:13px;color:#CFC8B2;">掌握定价权 · 无惧竞争</small></div>
+        <div class="op">＋</div>
+        <div class="term">成瘾产品<br><small style="font-weight:400;font-size:13px;color:#CFC8B2;">反复消费 · 欲罢不能</small></div>
+      </div>
+      <div class="formula-note">
+        <div class="fn"><b>行业</b>决定利润爆发的基础——池子够大，赚钱才有把握。<span class="src">《复合增长》第五章</span></div>
+        <div class="fn"><b>垄断</b>决定超额利润的核心——竞争是投资最大的敌人，垄断把风险化为零。<span class="src">《复合增长》第六章</span></div>
+        <div class="fn"><b>成瘾</b>决定利润持续的源泉——瘾品让人重复消费，利润源源不断。<span class="src">《复合增长》第七章</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 投资体系 ===== -->
+<section id="system" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">贰 · 确定性体系</span>
+      <h2>买股票，就是买未来盈利确定的公司</h2>
+      <p>林园投资体系的核心是"确定性"：只要存在 5% 的不确定性就不买入。日常重点研究的股票不超过 30 只，每年新增跟踪不超过 5 只。体系自上而下分四层推进。</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="num">LAYER 01</span>
+        <h3>选行业</h3>
+        <p>景气度要高，踩准进场节奏——在行业上升期投资，不在衰落期踏入。</p>
+        <ul>
+          <li>市场规模大的朝阳行业</li>
+          <li>与嘴巴消费相关（白酒）</li>
+          <li>与三大慢性病相关（医药）</li>
+        </ul>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="pillar">
+        <span class="num">LAYER 02</span>
+        <h3>选企业</h3>
+        <p>好企业＝行业＋垄断＋成瘾；有老大就不选老二，只买赚钱机器。</p>
+        <ul>
+          <li>垄断 / 老字号 / 龙头</li>
+          <li>12 条选股规则优中选优</li>
+          <li>算清未来 3 年的账</li>
+        </ul>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="pillar">
+        <span class="num">LAYER 03</span>
+        <h3>算财务</h3>
+        <p>只看六大财务指标，用数字说话——账算得清，才敢重仓、才敢满仓。</p>
+        <ul>
+          <li>利润总额 / 净资产收益率</li>
+          <li>毛利率 / 预收款</li>
+          <li>回避应收账款、每股净资产</li>
+        </ul>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="pillar">
+        <span class="num">LAYER 04</span>
+        <h3>做操作</h3>
+        <p>买入看安全边际，持有像乌龟，卖出只因三种情况——赚确定性钱。</p>
+        <ul>
+          <li>低价进场，满仓捂股</li>
+          <li>牛熊节奏分阶段切换</li>
+          <li>无风险套利增厚收益</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 确定性五大战法 ===== -->
+<section id="certainty">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">叁 · 确定性五大战法</span>
+      <h2>如何把不确定变成确定</h2>
+      <p>确定性是复合增长的基石——"不能今天对一次，明天又错一次，那样资金又会倒回去"。林园以此建立五大战法。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h4><span class="ico">一</span>不熟不做</h4>
+        <p>只在能力圈内投资。对自己熟悉、能准确判断未来走势的行业才买；不熟悉的坚决不碰，否则股价一跌就心慌、拿不住。</p>
+        <div class="tagline">"唐僧走出孙悟空画的圈，就被白骨精抓走了。"</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">二</span>只买垄断企业</h4>
+        <p>任何风险都来自竞争。垄断企业把风险化为零，是"赚钱机器"，身处朝阳行业、拥有垄断利润、具备成瘾特点，源源不断赚钱。</p>
+        <div class="tagline">"投资没有别的诀窍，就是垄断。"</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">三</span>股价有上升空间</h4>
+        <p>即使盈利确定，若股价没有上涨空间也不能投资。低位进场留出安全边际——价值与价格的差距就是防御地带。</p>
+        <div class="tagline">"贵出如粪土，贱取如珠玉。"</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">四</span>选确定性金融工具</h4>
+        <p>大量财富其实来自债券市场：企业可转债"涨时猛如股、跌时稳如债"，价格低于面值即悄然进场；海外企业债券利率高、安全性好。</p>
+        <div class="tagline">"我的财富超过一半来自无风险套利。"</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">五</span>防范黑天鹅</h4>
+        <p>投资适度分散、建立组合。工具涵盖股票、可转债、海外债券，资产分布于多个国家和地区——东方不亮西方亮。</p>
+        <div class="tagline">"就算只有1000元，我也会建立投资组合。"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 三类确定性企业 ===== -->
+<section id="three-kinds" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">肆 · 三类确定性企业</span>
+      <h2>确定性最高的公司长什么样</h2>
+      <p>在同等条件下，与一般企业相比，拥有特许经营权的企业未来盈利性更确定。林园首选的确定性企业有三类。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h4><span class="ico">A</span>垄断行业企业</h4>
+        <p><b style="color:var(--green)">自然垄断</b>：独占有限资源（机场、高速）。<b style="color:var(--green)">经济垄断</b>：竞争兼并形成规模优势。<b style="color:var(--green)">行政垄断</b>：特许经营权壁垒（收益最稳定）。</p>
+        <div class="tagline">代表：上海机场、高速公路——"看得见底"的生意</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">B</span>老字号企业</h4>
+        <p>"红烧肉、粉蒸肉"能传承千年自然有道理：品牌可信、产品过硬、有独有定价权、毛利率稳定。最差结果也是经营稳定，最能产生"大黑马"。</p>
+        <div class="tagline">代表：同仁堂、云南白药、片仔癀、马应龙</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">C</span>龙头企业</h4>
+        <p>从激烈市场竞争中杀出来的强势企业，经市场证明后劲十足。它们形成品牌后随消费升级逐步提价，利润超预期增长。</p>
+        <div class="tagline">代表：招商银行、伊利——"出山老虎"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 12条选股规则 ===== -->
+<section id="rules">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">伍 · 赚钱机器</span>
+      <h2>林园选股的十二条规则</h2>
+      <p>林园定义的"赚钱机器"：像印钞机一样，不受任何因素影响、不断赚钱的公司。遵循 12 条规则，基本已排除 95% 以上的公司——伟大的公司本就凤毛麟角。</p>
+    </div>
+    <div class="cards">
+      <div class="card"><h4><span class="ico">01</span>朝阳行业</h4><p>未来受众市场越来越大、前景广阔。行业选对，等于上了高速电梯。</p></div>
+      <div class="card"><h4><span class="ico">02</span>垄断地位</h4><p>掌握定价权、产品排他，业绩稳定或增长可期。</p></div>
+      <div class="card"><h4><span class="ico">03</span>成瘾型产品</h4><p>白酒、咖啡、烟草、巧克力、依赖性药物——反复消费、欲罢不能。</p></div>
+      <div class="card"><h4><span class="ico">04</span>产品供不应求</h4><p>产品从不降价、先付款后交货。片仔癀 14 次提价、累计 4 倍，是教科书。</p></div>
+      <div class="card"><h4><span class="ico">05</span>毛利率高且稳定</h4><p>毛利率持续下降＝经营困难。未来能涨的公司，毛利率一定不下降。</p></div>
+      <div class="card"><h4><span class="ico">06</span>算清3年账</h4><p>按最坏结果算未来 3 年账——算得清才敢满仓、才能心中不慌。</p></div>
+      <div class="card"><h4><span class="ico">07</span>傻瓜能经营</h4><p>不倚重管理层。茅台高管入狱、业绩照样千亿，这才是硬朗的公司。</p></div>
+      <div class="card"><h4><span class="ico">08</span>嘴巴消费相关</h4><p>14 亿张嘴巴每天吃喝是第一刚需，快速消费品好算账、不积压存货。</p></div>
+      <div class="card"><h4><span class="ico">09</span>龙头老大</h4><p>有老大就不选老二；分不出老大老二时，组合配置两家。</p></div>
+      <div class="card"><h4><span class="ico">10</span>婴儿股本巨人品牌</h4><p>股本小、地位高、盈利强——享受股价上涨与股本扩张的双重放大。</p></div>
+      <div class="card"><h4><span class="ico">11</span>老字号</h4><p>千百年文化传承、占领用户心智、独门生意。主力利润集中于一种产品最理想。</p></div>
+      <div class="card"><h4><span class="ico">12</span>投入一定产出无限大</h4><p>不需大规模再投入，利润稳步增长——茅台、喜诗糖果式的好生意。</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 六大财务指标 ===== -->
+<section id="finance" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">陆 · 六大财务指标</span>
+      <h2>挑选股票，就是挑选公司</h2>
+      <p>林园很少花大量时间研究完整报表，只认真审视六大财务指标——这种财务分析方法与巴菲特不谋而合。</p>
+    </div>
+    <table class="data">
+      <colgroup>
+        <col class="col-idx"><col class="col-name"><col class="col-std"><col class="col-src">
+      </colgroup>
+      <thead><tr><th>指标</th><th>林园态度</th><th>判断标准与逻辑</th><th>代表案例</th></tr></thead>
+      <tbody>
+        <tr><td>① 利润总额</td><td>先看绝对数</td><td>年利润至少 1 个亿——"还不如个体户赚得多"的公司不投。利润够大才有扩张动力、抗周期能力、研发费用。</td><td>武钢、宝钢年赚百亿；招行年赚数十亿</td></tr>
+        <tr><td>② 每股净资产</td><td>不要去关心</td><td>能赚钱的净资产才是有效净资产，否则只是"纸上富贵"。该指标常被人为修饰。</td><td>上海商业股地价重估案例</td></tr>
+        <tr><td>③ 净资产收益率</td><td>10% 以下免谈</td><td>选股标准大于 20%；连证监会配股 10% 门槛都达不到的，没什么可研究。</td><td>茅台 ROE 80%+；招行北京分行 53%</td></tr>
+        <tr><td>④ 产品毛利率</td><td>要高、稳定、趋升</td><td>标准 20% 以上。毛利率下降要警惕竞争加剧；白酒毛利率长期稳定。</td><td>茅台 83%；山西汾酒 5 年 59.7%→72.1%</td></tr>
+        <tr><td>⑤ 应收账款</td><td>注意回避</td><td>无法判断这笔钱未来能否收回。可收回型（自来水公司欠款）例外，销路不畅型必须回避。</td><td>新兴铸管、云天化（可收回）</td></tr>
+        <tr><td>⑥ 预收账款</td><td>越多越好</td><td>先收款后发货＝已获订单并取得支付，预示未来收入利润——"拿货要先交钱的公司才够硬"。</td><td>茅台、五粮液先款后货</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-head" style="margin-top:52px;">
+      <span class="sec-tag">柒 · 数字说话</span>
+      <h2>林园的量化选股标准</h2>
+      <p>"投资是经济活动，经济活动的通用语言是数字。" 以下是散落在三本书中的明确量化口径。</p>
+    </div>
+    <div class="cards">
+      <div class="card"><h4><span class="ico">1</span>市盈率＝增长率</h4><p>市盈率 20 倍时，要求未来 3 年复合增长 20% 以上——市盈率倍数等于未来 3 年复合增长的最低百分比。</p></div>
+      <div class="card"><h4><span class="ico">2</span>复合增长 &gt; 18%</h4><p>未来 3 年复合增长率 18% 是底线，越高越好。增长是股价上涨的原动力。</p></div>
+      <div class="card"><h4><span class="ico">3</span>毛利率 &gt; 20%</h4><p>毛利率 20% 以上且稳定趋升，代表定价权与市场地位。</p></div>
+      <div class="card"><h4><span class="ico">4</span>现金流越多越好</h4><p>现金流如人体血液——账上现金多、毛利率高的公司"硬朗"。</p></div>
+      <div class="card"><h4><span class="ico">5</span>跟踪 3 年再买</h4><p>先少量买入，跟踪企业及主要竞争对手至少 3 年，确认盈利持续、估值合理才大量买入。</p></div>
+      <div class="card"><h4><span class="ico">6</span>5% 不确定性不买</h4><p>只要存在 5% 的投资不确定性就不买入；重点研究 ≤30 只、年新增 ≤5 只。</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 行业主线 ===== -->
+<section id="industry">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">捌 · 行业主线</span>
+      <h2>两条清晰的行业主线</h2>
+      <p>"行业不同，未来就不同。" 林园只投自己有把握的行业，主线清晰：与嘴巴相关的垄断消费品 ＋ 与三大慢性病相关的医药医疗。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h4><span class="ico">酒</span>嘴巴消费 · 白酒</h4>
+        <p>必需品、纯饮品、快销品——不积压存货，好算账。白酒龙头掌握定价权，产品先款后货、从不降价。茅台是林园的压舱石：2003 年重仓，历经塑化剂风波坚守，最高 90% 仓位集中茅台。</p>
+        <div class="tagline">"过去 20 年产品不降价的公司才是真正的好公司。"</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">药</span>三大慢性病 · 医药</h4>
+        <p>糖尿病、心脏病（心脑血管）、高血压——患病者必须天天吃药、断不了根，具备"成瘾性"。这是林园认定的"这辈子资产上台阶的第 4 次大机遇"，未来 30 年最坏结果赚 100 倍。</p>
+        <div class="tagline">"三大病的利润占医药工业的 70%。"</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">史</span>四次大机遇回顾</h4>
+        <p>① 银行股（深发展、招行）→ ② 家电股（四川长虹）→ ③ 白酒股（茅台、五粮液）→ ④ 医药股（进行时）。每一次都踩在行业爆发前夜。</p>
+        <div class="tagline">"我比别人超前 20 年。"</div>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:56px;">
+      <span class="sec-tag">玖 · 医药逻辑链</span>
+      <h2>为什么医药股确定性最高</h2>
+      <p>林园医药投资的推理链环环相扣、每一环都是"确定的"——这是其 100% 确定性理念的完整演绎。</p>
+    </div>
+    <div class="chain">
+      <div class="node"><span class="n">STEP 1</span><b>老龄化确定</b>60 后 5–6 亿人进入 50 岁+，人口结构是既定事实</div>
+      <div class="arrow">→</div>
+      <div class="node"><span class="n">STEP 2</span><b>病患增多确定</b>三大病患病率随年龄上升</div>
+      <div class="arrow">→</div>
+      <div class="node"><span class="n">STEP 3</span><b>用药成瘾确定</b>三大病去不了病根，只能天天吃药</div>
+      <div class="arrow">→</div>
+      <div class="node"><span class="n">STEP 4</span><b>利润增长确定</b>药企利润随需求升高</div>
+      <div class="arrow">→</div>
+      <div class="node"><span class="n">STEP 5</span><b>股价上升确定</b>长期股价由盈利驱动</div>
+    </div>
+    <div class="cards" style="margin-top:28px;">
+      <div class="card"><h4><span class="ico">据</span>三甲医院调研</h4><p>过去 3 年大内科就诊量增加 1 倍，大内科室效益最好——慢性病去不了病根，患者只能对症下药。</p></div>
+      <div class="card"><h4><span class="ico">距</span>产业差距数据</h4><p>发达国家医药医疗净利润占上市企业约 68%，A 股不足 10%；人均医疗开支亦差距数倍——空间巨大。</p></div>
+      <div class="card"><h4><span class="ico">策</span>最坏结果算账</h4><p>人的平均寿命不会减少，和平年代只会更长——"4 亿到 6 亿人要保命"，这是最坏情景下也算得清的账。</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 无风险套利 ===== -->
+<section id="arbitrage" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">拾 · 无风险套利</span>
+      <h2>弯腰捡钱的工具箱</h2>
+      <p>证券投资工具不只股票一种。林园的财富超过一半来源于无风险套利——前提是看得见"底"。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h4><span class="ico">债</span>可转债</h4>
+        <p>股债双性："涨时猛如股、跌时稳如债"。熊末牛初让可转债打前锋——上一轮行情大盘涨 5 倍，可转债赚 10 倍以上。</p>
+        <div class="tagline">案例：招行转债 102.5 元买入，转股零风险</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">证</span>权证套利</h4>
+        <p>分析大股东底线，利用认沽权证行权价找到"保底价"——只要大股东不破产，就会维持股价在行权价上方。</p>
+        <div class="tagline">案例：五粮液 7.96 元底、上海机场 13.6 元底</div>
+      </div>
+      <div class="card">
+        <h4><span class="ico">新</span>打新 · 逆回购</h4>
+        <p>网下打新是"弯腰捡钱的最佳良机"；国债逆回购是超短期套利工具——闲钱也滚动生息。</p>
+        <div class="tagline">"弯腰捡钱"的机会，错过了不会有第二次</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 牛熊策略 ===== -->
+<section id="market">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">拾壹 · 牛熊作战地图</span>
+      <h2>什么时候做什么事</h2>
+      <p>林园的投资理念与操作方法随行情不断调整——没有一成不变、永远有效的操作，只有随市场变化调整策略才能立于不败之地。</p>
+    </div>
+    <table class="data">
+      <colgroup>
+        <col class="col-idx"><col class="col-name"><col class="col-std"><col class="col-src">
+      </colgroup>
+      <thead><tr><th>阶段</th><th>策略</th><th>具体打法</th><th>关键纪律</th></tr></thead>
+      <tbody>
+        <tr><td>熊市末期</td><td>布局建仓</td><td>满仓买入好公司股票，像"乌龟"一样守着等待牛市；可转债打前锋。</td><td>"套住的都是金项链"</td></tr>
+        <tr><td>牛市初期</td><td>满仓捂股</td><td>70% 大盘绩优龙头（招行、上海机场）＋30% 小盘股（丽江旅游、马应龙）；满仓后拿得住。</td><td>"在痛苦中赚钱"</td></tr>
+        <tr><td>牛市中期</td><td>聚焦小盘</td><td>聚焦最具爆发力的小盘绩优股，享受股本扩张与股价上涨双重放大。</td><td>龙头股从启动到相对高位至少涨 8 倍</td></tr>
+        <tr><td>牛市末期</td><td>兑现离场</td><td>人气沸腾时兑现利润、及时离场；"贵出如粪土"。</td><td>2000 年 2245 点前全线撤离 A 股</td></tr>
+      </tbody>
+    </table>
+    <div class="cards" style="margin-top:28px;">
+      <div class="card"><h4><span class="ico">龟</span>乌龟政策</h4><p>"我熊市末期满仓买入之后，就像乌龟一样守着等待牛市。现在我已经赚了很多钱。" 上涨趋势一旦形成就坚决持有，不轻易下车。</p></div>
+      <div class="card"><h4><span class="ico">牛</span>赚泡沫的钱</h4><p>"股市有泡沫时，才是我赚钱的最好时机。" 赚的是泡沫的钱——泡沫没来之前，业绩平平是正常的。</p></div>
+      <div class="card"><h4><span class="ico">心</span>行情转折心态转换</h4><p>任何时候保持 100% 仓位也在不同市场间腾挪；心态要随行情转换，不惧怕波动——波动才有便宜买入的机会。</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 财富传奇时间轴 ===== -->
+<section id="legend" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">拾贰 · 财富传奇</span>
+      <h2>从 8000 元到数百亿：近 30 年足迹</h2>
+      <p>林园自述："第一个 100 万很难赚，以后靠资本积累复利，钱赚钱就容易了；第一个 15 年很难熬，95% 以上的人都非常难。"</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-time">1989</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>8000 元入市</b><p>学医出身，在深圳博物馆工作。第一笔以 88.45 元买入深发展 5 股，数月内赚 12 万元——第一桶金。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">1990–92</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>原始股淘金，市值破千万</b><p>奔忙海南、上海收购内部职工股（原野、锦兴、琼民源、深华新），上市后翻十几倍至几十倍。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">1993</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>逃过第一波熊市</b><p>判断市场供需逆转、无资金看重价值投资，果断脱手，转战西安房地产（获利 500 万）。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">1996–98</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>重仓深发展、四川长虹</b><p>深发展赚 3000 余万；长虹 25 元买入、60 元以上卖出，进账 4000 余万。几年盈利约 9 倍。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">2000–01</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>胜利大逃亡</b><p>上证 2245 点前全线撤离 A 股，转战周边市场；2000–2003 年海外平均回报约 3 倍。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">2003–06</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>价值投资回归，重仓茅台</b><p>1.7 亿换成茅台、五粮液、云南白药等，两年增值 140%；总资产达 4 亿元。买入招行转债、五粮液权证等无风险套利品种。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">2007</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>总资产超 20 亿</b><p>2006 年初到 2006 年 10 月净赚 4 倍，总资产翻 5 倍；伴随 2007 大牛市延续财富传奇。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">2016–17</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>茅台新高，市值破 300 亿传闻</b><p>茅台股价突破 300→700 元关口，林园市值大幅上升，媒体断言超 300 亿。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">2016–今</div>
+        <div class="tl-axis"><span class="tl-dot"></span></div>
+        <div class="tl-body"><b>医药主线，管理千亿</b><p>退出银行、保险，换成医药类股票；2019 年 35 只基金中 14 只翻倍；2022 年在管资产过千亿，布局全球市场。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 复利可视化 ===== -->
+<section id="compound">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">拾叁 · 复利之力</span>
+      <h2>复合增长：世界第八大奇迹</h2>
+      <p>"假如你每年能拿出 1.5 万元做投资，年回报率 20%，40 年后你的资产就是 1.08 亿元。" 下图为两种复利情景的对比——时间的复利远超直觉。</p>
+    </div>
+    <div class="chart-box">
+      <h4>复利演示：本金 1.5 万元/年</h4>
+      <div class="sub">年投入 1.5 万元 · 年回报率 20% vs 10%（数据来自《林园炒股秘籍》复合增长示例）</div>
+      <div id="chart-compound" class="chart"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 语录 ===== -->
+<section id="quotes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">拾肆 · 语录</span>
+      <h2>林园的话：句句是方法论</h2>
+      <p>以下金句分别出自《林园炒股秘籍（精装增补版）》《复合增长》及其访谈实录。</p>
+    </div>
+    <div class="quotes">
+      <div class="quote"><p>"买股票就是买未来盈利确定的公司。"</p><div class="who">——确定性理论</div></div>
+      <div class="quote"><p>"投资没有别的诀窍，就是垄断。从我们入股市以来，所有的方向性问题，我都把它做到了，抓住了。"</p><div class="who">——垄断论</div></div>
+      <div class="quote"><p>"只要存在 5% 的不确定性就不买入。我投资的公司，都要算清楚未来 3 年的账。"</p><div class="who">——确定性铁律</div></div>
+      <div class="quote"><p>"贵出如粪土，贱取如珠玉。"</p><div class="who">——买卖时机</div></div>
+      <div class="quote"><p>"我熊市末期满仓买入之后，就像乌龟一样守着等待牛市。"</p><div class="who">——乌龟政策</div></div>
+      <div class="quote"><p>"未来 3 年能涨的公司，毛利率一定是不下降的。毛利率下降的公司我看都不看。"</p><div class="who">——毛利率纪律</div></div>
+      <div class="quote"><p>"在全世界范围内，我都没发现有比贵州茅台还好的企业——拉货的卡车在库房外排队等待，先付款后交货。"</p><div class="who">——供不应求</div></div>
+      <div class="quote"><p>"我比别人超前 20 年。我只是在我的领域里，把一个领域搞清楚，我不会错。"</p><div class="who">——能力圈自信</div></div>
+      <div class="quote"><p>"投资医药股，未来 30 年最差的结果是赚 100 倍。"</p><div class="who">——医药逻辑</div></div>
+      <div class="quote"><p>"股市有泡沫时，才是我赚钱的最好时机。"</p><div class="who">——赚泡沫的钱</div></div>
+      <div class="quote"><p>"赚钱是快乐的事，但更快乐的是研究企业。我的爱好就是和优秀的企业在一起。"</p><div class="who">——投资与生活</div></div>
+      <div class="quote"><p>"做投资，首先是把行业选对，在正确的道路上前进。这一点是我的强项——华尔街的犹太基金经理说我是行业宏观投资领军人物，我受之无愧。"</p><div class="who">——行业选择</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 三本书 ===== -->
+<section id="books" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">拾伍 · 三本书地图</span>
+      <h2>本知识库的蒸馏来源</h2>
+      <p>三本著作构成林园投资思想的完整拼图：一本讲理念源头，一本讲逻辑系统，一本讲财务技术。</p>
+    </div>
+    <div class="books">
+      <div class="book">
+        <div class="head"><div class="t">林园炒股秘籍<br>（精装增补版）</div><div class="m">王洪 著 · 2019</div></div>
+        <div class="body">
+          <p>确定性理论的源头：财富传奇、确定性投资理念、三类确定性企业、无风险套利、六大财务指标、牛熊策略、选股六技巧、医药投资逻辑与语录。</p>
+          <div class="chips"><span class="chip">确定性</span><span class="chip">垄断</span><span class="chip">无风险套利</span><span class="chip">医药逻辑</span></div>
+        </div>
+      </div>
+      <div class="book">
+        <div class="head"><div class="t">复合增长<br>林园的投资逻辑与策略</div><div class="m">王洪 著 · 2021</div></div>
+        <div class="body">
+          <p>投资逻辑的系统化：复合增长、确定性五大战法、复利六要素、12 条选股规则、垄断七大特征、瘾品经济学、三大病医药投资、六大财务指标、套利与自我管理。</p>
+          <div class="chips"><span class="chip">12条规则</span><span class="chip">垄断特征</span><span class="chip">成瘾</span><span class="chip">自我管理</span></div>
+        </div>
+      </div>
+      <div class="book">
+        <div class="head"><div class="t">财报掘金<br>林园选股的核心财务指标</div><div class="m">王洪 · 张晓曦 著 · 2022</div></div>
+        <div class="body">
+          <p>财务技术的实操手册：宏观分析、行业掘金、财务报表解剖（茅台五粮液之战）、六大财务指标详解、穿越周期的牛股财务特征、股市陷阱与造假识别。</p>
+          <div class="chips"><span class="chip">宏观</span><span class="chip">行业周期</span><span class="chip">报表解剖</span><span class="chip">防造假</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>关于本知识库</h4>
+      <p>本页面由《林园炒股秘籍（精装增补版）》《复合增长：林园的投资逻辑与策略》《财报掘金：林园选股的核心财务指标》三本公开出版物蒸馏而成，OCR 提取原书全文后按主题重构。</p>
+    </div>
+    <div>
+      <h4>阅读提示</h4>
+      <ul>
+        <li>· 数据与案例均出自上述书籍原文，代表其出版时点的事实口径。</li>
+        <li>· 书中人物资产数值为媒体报道口径，未独立核实。</li>
+        <li>· 本知识库仅作知识整理，不构成任何投资建议。市场有风险，决策需独立判断。</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // 复利演示：年投入1.5万，20% vs 10%，40年（书中口径：40年后约1.08亿）
+  function annuityEnd(years, rate, annual){
+    var v=0;
+    for(var y=1;y<=years;y++){ v=v*(1+rate)+annual; }
+    return v;
+  }
+  var years=[], s20=[], s10=[];
+  for(var y=1;y<=40;y++){
+    years.push(y);
+    s20.push(Math.round(annuityEnd(y,0.20,15000)/10000));
+    s10.push(Math.round(annuityEnd(y,0.10,15000)/10000));
+  }
+  var el=document.getElementById('chart-compound');
+  if(el && window.echarts){
+    var chart=echarts.init(el);
+    chart.setOption({
+      grid:{left:64,right:40,top:36,bottom:44},
+      tooltip:{trigger:'axis',confine:true,
+        formatter:function(ps){
+          var s='第'+ps[0].axisValue+'年<br>';
+          ps.forEach(function(p){ s+=p.marker+p.seriesName+'：'+p.value+'万元<br>'; });
+          return s;
+        }},
+      legend:{data:['年回报20%','年回报10%'],top:0},
+      xAxis:{type:'category',data:years.map(function(y){return y%5===0?y:'';}),
+        name:'年数',nameLocation:'middle',nameGap:32,axisLabel:{color:'#6E6A5C'}},
+      yAxis:{type:'value',name:'资产(万元)',nameTextStyle:{color:'#6E6A5C'},
+        axisLabel:{color:'#6E6A5C',formatter:function(v){return v>=10000?(v/10000).toFixed(1)+'亿':v;}}},
+      series:[
+        {name:'年回报20%',type:'line',data:s20,smooth:true,symbol:'none',
+          lineStyle:{width:3,color:'#A3442E'},
+          areaStyle:{color:'rgba(163,68,46,.12)'}},
+        {name:'年回报10%',type:'line',data:s10,smooth:true,symbol:'none',
+          lineStyle:{width:2,color:'#B9922F',type:'dashed'}}
+      ]
+    });
+    window.addEventListener('resize',function(){chart.resize();});
+  }
+})();
+</script>
+</body>
+</html>
